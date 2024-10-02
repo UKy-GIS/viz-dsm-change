@@ -205,7 +205,7 @@
 
             <section data-background-image='images/background.jpg' data-background-opacity="0.2">
                 <h3>
-                    First use of height model<span class="fragment">: 2022 floods</span>
+                    First use of height model<span class="fragment">: visualizing floods</span>
                 </h3>
             </section>
 
@@ -239,33 +239,75 @@
             </section>
 
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Mapzen</h3>
+                <h3>25 ft above Troublesome</h3>
                 <ul>
                     <li class='fragment'>
-                        Terrain tiles, 2016. <a target='_blank' href="https://www.mapzen.com/blog/terrain-tile-service/">🔗</a>
+                        Subtract height from REM.
                     </li>
                     <li class='fragment'>
-                        World-wide elevation data from 3DEP, SRTM, etc.
+                        Jupyter Notebook with ArcPy. <a target='_blank' href="">🔗</a>
                     </li>
                     <li class='fragment'>
-                        Hosted as public domain tiles on AWS S3. <a target='_blank' 
-                            href="https://registry.opendata.aws/terrain-tiles/">🔗</a>
+                        GEO509 report. <a target='_blank' href="https://uky-gis.github.io/geo509/report-2022">🔗</a>
                     </li>
                 </ul>
             </section>
 
-            <section data-pre-load data-background-image="./images/footprints-preview.png" data-background-color="white"
-                data-background-opacity="1" data-background-size="contain">
+            <section
+            data-background-iframe='https://outragegis.com/509/inundation/' >
+            </section>
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Compare DSMs from <br>Phase 1 and Phase 2
+                </h3>
             </section>
 
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>DEM data in the browser?</h3>
+                <h3>Simple math</h3>
                 <ul>
                     <li class='fragment'>
-                        32-bit rasters <span class="fragment">won't work.</span> 
+                        <code style="color:rgb(249,181,55)">change = DSM_P2 - DSM_P1</code>
                     </li>
                     <li class='fragment'>
-                        RGBify it <span class="fragment">and tile it for web browsers. <a target='_blank'  href="https://github.com/syncpoint/terrain-rgb">🔗</a> </span> 
+                        but trickier symbology.
+                    </li>
+                    <li class='fragment'>
+                        Lexington 2010–2019 DSM change over 2019 shaded relief.
+                    </li>
+                </ul>
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_0.jpg" data-background-color="white"
+                data-background-opacity="1" data-background-size="contain">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_1.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_2.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-image="./images/change_3.jpg" data-background-color="white"
+                data-background-opacity="1">
+            </section>
+
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Record of change<br><span class="fragment">lest we forget</span>
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Caveats</h3>
+                <ul>
+                    <li class='fragment'>
+                        If the replacement structure is same height, no change.
+                    </li>
+                    <li class='fragment'>
+                        No understanding difference.
                     </li>
                 </ul>
             </section>
@@ -281,245 +323,6 @@
             </section>
 
 
-            <section data-pre-load data-background-iframe="terrain-rgb/#9.83/36.6683/-83.8133/0/60"
-                data-background-opacity="1">
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>MapLibre GL JS</h3>
-                <ul>
-                    <li class='fragment'>
-                        2021 fork of Mapbox GL JS. <a target='_blank'  href="https://github.com/maplibre">🔗</a>
-                    </li>
-                    <li class='fragment'>
-                        Open-source WebGL JavaScript library.
-                    </li>
-                    <li class='fragment'>
-                        Renders 3D maps with vector, terrain, and raster tiles.
-                    </li>
-                </ul>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
-                data-markdown data-separator="___" data-background-color=#2D2D2D>
-                <textarea data-template>
-            ```html 
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <meta charset="utf-8" />
-                <title>Terrain tiles</title>
-                <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-                <script src="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.js"></script>
-                <link href="https://unpkg.com/maplibre-gl@3.0.1/dist/maplibre-gl.css" rel="stylesheet" />
-            ```
-                        </textarea>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Kentucky</h3>
-                <ul>
-                    <li class='fragment'>
-                        Use raster tile services from
-                    </li>
-                    <li class='fragment'>
-                        kygisserver.ky.gov
-                    </li>
-                    <li class='fragment'>
-                        to get multiDirectional hillshade.
-                    </li>
-                </ul>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
-                data-markdown data-separator="___" data-background-color=#2D2D2D>
-                <textarea data-template>
-                        ```html 
-                        https://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_MultiDirectional_Hillshade_WGS84WM/MapServer/tile/{z}/{y}/{x}
-                        ```
-                                    </textarea>
-            </section>
-
-            <section data-pre-load data-background-iframe="basic" data-background-opacity="1">
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Awesome</h3>
-                <ul>
-                    <li class='fragment'>
-                        3D maps rendered in browser.
-                    </li>
-                    <li class='fragment'>
-                        Completely free with no usage limits.
-                    </li>
-                    <li class='fragment'>
-                        But Ky has higher resolution elevation data
-                    </li>
-                    <li class='fragment'>
-                        and we need storage.
-                    </li>
-                </ul>
-            </section>
-
-            <section data-pre-load data-background-iframe="https://contig.us" data-background-opacity="1">
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>contig.us</h3>
-                <ul>
-                    <li class='fragment'>
-                        Linux server on Digital Ocean
-                    </li>
-                    <li class='fragment'>
-                        provisioned with open-source geospatial software.
-                    </li>
-                    <li class='fragment'>
-                        Students have SSH access to server.
-                    </li>
-                    <li class='fragment'>
-                        60GB at $18/month.
-                    </li>
-                </ul>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Student goals</h3>
-                <ul>
-                    <li class='fragment'>
-                        Build a data pipeline
-                    </li>
-                    <li class='fragment'>
-                        to create raster and vector tiles
-                    </li>
-                    <li class='fragment'>
-                        hosted on the server.
-                    </li>
-                </ul>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Vector tiles</h3>
-                <ul>
-                    <li class='fragment'>
-                        Tile spec pioneered by Mapbox.
-                    </li>
-                    <li class='fragment'>
-                        Smooth, fast rendering of large datasets
-                    </li>
-                    <li class='fragment'>
-                        but need a vector tile server.
-                    </li>
-                    <li class='fragment'>
-                        That's where you get locked into a provider.
-                    </li>
-                </ul>
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>PMtiles</h3>
-                <ul>
-                    <li class='fragment'>
-                        "single-file archive format for pyramids of tiled data" <a
-                            href="https://docs.protomaps.com/pmtiles/">🔗</a>
-                    </li>
-                    <li class='fragment'>
-                        provides self-hosted solution.
-                    </li>
-                    <li class='fragment'>
-                        Following example 40MB layer.
-                    </li>
-                </ul>
-            </section>
-
-            <section data-pre-load
-                data-background-iframe="https://protomaps.github.io/PMTiles/?url=https%3A%2F%2Fnyc3.digitaloceanspaces.com%2Fastoria%2Ftiles%2Fvector%2Frrg_contours.pmtiles#map=15.35/37.817393/-83.62711"
-                data-background-opacity="1">
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Pipeline</h3>
-                <ul>
-                    <li class='fragment'>
-                        PostGIS > GDAL > Tippecanoe > PMtiles
-                    </li>
-                    <li class='fragment'>
-                        See <a href="./scripts/create-tiles.sh">scripts/create-tiles.sh</a>
-                    </li>
-                </ul>
-            </section>
-
-
-
-            <section data-pre-load data-background-iframe="map/dist-blender/#9.83/36.6683/-83.8133/0/60"
-                data-background-opacity="1">
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>KyFromAbove</h3>
-                <ul>
-                    <li class='fragment'>
-                        Create RGB elevation tiles from DEM
-                    </li>
-                    <li class='fragment'>
-                        See <a href="./scripts/create-tiles.sh">scripts/process-terrain.sh</a>
-                    </li>
-                    <li class='fragment'>
-                        Pine Mountain comparison
-                    </li>
-                </ul>
-            </section>
-
-            <section data-pre-load data-background-iframe="map/dist-ky/#16.1/36.74809/-83.692746/-20.8/51"
-                data-background-opacity="1">
-            </section>
-
-            <section data-pre-load data-background-iframe="map/dist/#16.1/36.74809/-83.692746/-20.8/51"
-                data-background-opacity="1">
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Size</h3>
-                <ul>
-                    <li class='fragment'>
-                        19 MB tile set per DEM tile.
-                    </li>
-                    <li class='fragment'>
-                        Better methods of creating tiles.
-                    </li>
-                    <li class='fragment'>
-                        425 MB for a location like the Red River Gorge.
-                    </li>
-                </ul>
-            </section>
-
-            <section data-pre-load
-                data-background-iframe="https://www.outragegis.com/gorge/map/#14.57/37.80534/-83.63853/0/44"
-                data-background-opacity="1">
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>Does Ky have statewide RGB DEM tiles?</h3>
-
-            </section>
-
-            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
-                <h3>DSM</h3>
-                <ul>
-                    <li class='fragment'>
-                        Lidar first-return elevations.
-                    </li>
-                    <li class='fragment'>
-                        Create tile set for DSM.
-                    </li>
-                    <li class='fragment'>
-                        Problem with tall buildings.
-                    </li>
-                </ul>
-            </section>
-
-            <section data-pre-load data-background-iframe="https://contig.us/hawaii/terrain/#12/38.025/-84.5"
-                data-background-opacity="1">
-            </section>
 
             <section data-pre-load
                 data-background-image="https://outragegis.com/weather/img/animation/yesterday/LookRock.gif"
