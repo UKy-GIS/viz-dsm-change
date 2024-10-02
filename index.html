@@ -245,7 +245,7 @@
                         Subtract height from REM.
                     </li>
                     <li class='fragment'>
-                        Jupyter Notebook with ArcPy. <a target='_blank' href="">🔗</a>
+                        Jupyter Notebook with ArcPy. <a target='_blank' href="https://github.com/UKy-GIS/viz-dsm-change/blob/main/scripts/lab-03-inundation.ipynb">🔗</a>
                     </li>
                     <li class='fragment'>
                         GEO509 report. <a target='_blank' href="https://uky-gis.github.io/geo509/report-2022">🔗</a>
@@ -312,14 +312,38 @@
                 </ul>
             </section>
 
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Code</h3>
+                <ul>
+                    <li class='fragment'>
+                        Jupyter Notebook with ArcPy. <a target='_blank' href="https://github.com/UKy-GIS/viz-dsm-change/blob/main/scripts/process_DSM_change.ipynb">🔗</a>
+                    </li>
+                    <li class='fragment'>
+                        No understanding difference.
+                    </li>
+                </ul>
+            </section>
+
             <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2"
                 data-markdown data-separator="___" data-background-color=#2D2D2D>
                 <textarea data-template>
                         ```py 
-                        # Plugin RGB values to get elevation
-                        elev = -10000 + (({R} * 256 * 256 + {G} * 256 + {B}) * 0.1)
+                        # Smooth surface to remove artifacts along the edges of tall structures
+                        neighborhood = arcpy.sa.NbrRectangle(3, 3, 'CELL')
+                        change = arcpy.sa.FocalStatistics(change_uncleaned, neighborhood , 'MEDIAN')
+                        # Where has there been increase and decrease in height
+                        filled = arcpy.sa.Con((change > 2), change, 0)
+                        removed = arcpy.sa.Con((change < -2), change, 0)
                         ```
                                     </textarea>
+            </section>
+
+            <section data-pre-load data-background-image="./images/ndvi_0.jpg" data-background-color="black"
+                data-background-opacity="1">
+            </section>
+
+            <section data-pre-load data-background-image="./images/ndvi_1.jpg" data-background-color="black"
+                data-background-opacity="1">
             </section>
 
 
