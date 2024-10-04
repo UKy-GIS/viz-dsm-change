@@ -93,6 +93,10 @@
                 </ul>
             </section>
 
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Explore heights<br><span class="fragment">using KyFromAbove lidar point clouds</span></h3>
+            </section>
+
             <!-- <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
                 <h3>UKy Digital Mapping</h3>
                 <ul>
@@ -142,7 +146,7 @@
                 <h3>Accurate?</h3>
                 <ul>
                     <li class='fragment'>
-                       Walk around neighborhood with theodolite <span class="fragment">iOS app.</span>
+                       Walk around neighborhood with theodolite? <span class="fragment">On an iOS app?</span>
                     </li>
                     <li class='fragment'>
                         Drop a tape measure off of a bridge?
@@ -267,7 +271,7 @@
                 <h3>Simple math</h3>
                 <ul>
                     <li class='fragment'>
-                        <code style="color:rgb(249,181,55)">change = DSM_P2 - DSM_P1</code>
+                        <code style="color:rgb(249,181,55)">change = DSM<sub>P2</sub> - DSM<sub>P1</sub></code>
                     </li>
                     <li class='fragment'>
                         but trickier symbology.
@@ -307,7 +311,10 @@
                         If the replacement structure is same height, no change.
                     </li>
                     <li class='fragment'>
-                        No understanding difference.
+                        No understanding of difference.
+                    </li>
+                    <li class='fragment'>
+                        Fuse other data sources?
                     </li>
                 </ul>
             </section>
@@ -319,7 +326,7 @@
                         Jupyter Notebook with ArcPy. <a target='_blank' href="https://github.com/UKy-GIS/viz-dsm-change/blob/main/scripts/process_DSM_change.ipynb">🔗</a>
                     </li>
                     <li class='fragment'>
-                        No understanding difference.
+                        Shows the process of calculating change between DSMs and colorizing point clouds. 
                     </li>
                 </ul>
             </section>
@@ -338,6 +345,27 @@
                                     </textarea>
             </section>
 
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Measuring tree heights
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>A tree canopy model</h3>
+                <ul>
+                    <li class='fragment'>
+                        Use NAIP NDVI to identify trees.
+                    </li>
+                    <li class='fragment'>
+                        Extract heights from DSM. 
+                    </li>
+                    <li class='fragment'>
+                        Visually select NDVI values for trees. 
+                    </li>
+                </ul>
+            </section>
+
             <section data-background-image="./images/ndvi_0.jpg" data-background-color="black"
                 data-background-opacity="1">
             </section>
@@ -350,10 +378,63 @@
             data-background-iframe='https://uky-gis.github.io/lexington-canopy-model/#14.21/38.03177/-84.51465' >
             </section>
 
+            <section data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>
+                    Good enough for cartography?
+                </h3>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Caveats</h3>
+                <ul>
+                    <li class='fragment'>
+                        Temporal resolutions don't match.
+                    </li>
+                    <li class='fragment'>
+                        Observations don't match.
+                    </li>
+                    <li class='fragment'>
+                        NAIP has profound vertical displacement. 
+                    </li>
+                    <li class='fragment'>
+                        Lidar scan angle. 
+                    </li>
+                </ul>
+            </section>
+
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Opportunities</h3>
+                <ul>
+                    <li class='fragment'>
+                        Fuse NDVI with DSM change
+                    </li>
+                    <li class='fragment'>
+                        to find loss and gain of tree canopy.
+                    </li>
+                    <li class='fragment'>
+                        <code style="color:rgb(249,181,55)">loss = (NDVI<sub>P1</sub> > x) & (height<sub>P2-P1</sub> < y)</code> 
+                    </li>
+                </ul>
+            </section>
+
             <section
             data-background-iframe='https://uky-gis.github.io/lexington-canopy-model/removed/#14.21/38.03177/-84.51465' >
             </section>
 
+            <section class='left' data-background-image='images/background.jpg' data-background-opacity="0.2">
+                <h3>Accurate?</h3>
+                <ul>
+                    <li class='fragment'>
+                        Again, get into the field.
+                    </li>
+                    <li class='fragment'>
+                        But, what about the historical observations?
+                    </li>
+                    <li class='fragment'>
+                        Google Maps Street View? <a target='_blank' href="https://www.google.com/maps/@38.0350607,-84.5089571,3a,75y,9.6h,94.94t/data=!3m8!1e1!3m6!1sSNTK41MR6Cnb-ebyuIemdQ!2e0!5s20230501T000000!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3DSNTK41MR6Cnb-ebyuIemdQ%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D101.94194%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192?coh=205409&entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D">🔗</a>
+                    </li>
+                </ul>
+            </section>
             
 
 
